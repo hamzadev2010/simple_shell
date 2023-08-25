@@ -16,8 +16,7 @@ char **tokenizer(char *line)
 		free(tmp), tmp = NULL;
 		return (NULL);
 	}
-	
-	while (token)
+		while (token)
 	{
 		cpt++;
 		token = strtok(NULL, DELIM);
