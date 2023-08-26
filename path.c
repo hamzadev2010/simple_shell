@@ -4,14 +4,16 @@
  * @command: full path to the command
  * @vars: pointer to struct of variables
  *
- * Return: 0 on succcess, 1 on failure
+ * Return: zero on succcess, one on failure
  */
 int path_execute(char *command, vars_t *vars)
 {
 	pid_t child_pid;
+
 	if (access(command, X_OK) == 0)
 	{
 		child_pid = fork();
+
 		if (child_pid == -1)
 			print_error(vars, NULL);
 		if (child_pid == 0)
@@ -48,6 +50,7 @@ char *find_path(char **env)
 {
 	char *path = "PATH=";
 	unsigned int i, j;
+
 	for (i = 0; env[i] != NULL; i++)
 	{
 		for (j = 0; j < 5; j++)
@@ -162,6 +165,7 @@ int execute_cwd(vars_t *vars)
 int check_for_dir(char *str)
 {
 	unsigned int i;
+
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] == '/')
